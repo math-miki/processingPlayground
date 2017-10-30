@@ -1,4 +1,6 @@
 int [][] field;
+boolean goLeft;
+boolean goRight;
 void setup() {
   size(1300, 800); // one cell is 50*50. so 26 * 16 cells.
   field = new int[16][26]; // [y][x]
@@ -15,6 +17,13 @@ void setup() {
 }
 
 void draw() {
+  drawField();
+//  moveEnemies();
+  moveMario();
+  drawMario();
+}
+
+void drawField() {
   for (int y=0; y<16; y++) {
     for (int x=0; x<26; x++) {
       switch(field[y][x]) {
@@ -38,7 +47,35 @@ void draw() {
   }
 }
 
+void moveMario() {
+  if(goLeft) {
+    // go forward
+  }
+  if(goRight) {
+    // go backward
+  }
+}
 
+void drawMario() {
+
+}
+
+void keyPressed() {
+  if(keyCode == 39 ) {
+    goRight = false;
+    goLeft = true;
+  } else if(keyCode == 37) {
+    goRight = false;
+    goRight = true;
+  }
+}
+void keyReleased() {
+  if(keyCode == 39) {
+    goLeft = false;
+  } else if(keyCode == 37) {
+    goRight = false;
+  }
+}
 /*
  0: space
  1: normal ground
