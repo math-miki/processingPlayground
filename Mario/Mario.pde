@@ -1,6 +1,13 @@
 int [][] field;
 boolean goLeft;
 boolean goRight;
+
+/*
+ 0: space
+ 1: normal ground
+ 2: normal block
+ */
+ 
 void setup() {
   size(1300, 800); // one cell is 50*50. so 26 * 16 cells.
   field = new int[16][26]; // [y][x]
@@ -76,8 +83,3 @@ void keyReleased() {
     goRight = false;
   }
 }
-/*
- 0: space
- 1: normal ground
- 2: normal block
- */
