@@ -1,13 +1,14 @@
 int [][] field;
 boolean goLeft;
 boolean goRight;
-
+Character mario;
 /*
  0: space
  1: normal ground
  2: normal block
+ 10: space && starting position of mario. it will be treated 0
  */
- 
+
 void setup() {
   size(1300, 800); // one cell is 50*50. so 26 * 16 cells.
   field = new int[16][26]; // [y][x]
@@ -19,7 +20,7 @@ void setup() {
       field[i][j] = fieldLineData[j];
     }
   }
-  noLoop();
+  setupMario();
   noStroke();
 }
 
@@ -31,6 +32,7 @@ void draw() {
 }
 
 void drawField() {
+  background(0);
   for (int y=0; y<16; y++) {
     for (int x=0; x<26; x++) {
       switch(field[y][x]) {
@@ -57,14 +59,33 @@ void drawField() {
 void moveMario() {
   if(goLeft) {
     // go forward
+    mario.move(1);
   }
   if(goRight) {
     // go backward
+    mario.move(-1);
+  } else {
+    mario.move(0);
   }
 }
 
 void drawMario() {
+  mario.display();
+}
 
+void setupMario() {
+  int marioX = 0;
+  int marioY = 0;
+  for(int y=0; y<16; y++) {
+    for(int x=0; x<26; x++) {
+      if(field[y][x] == 10) {
+        marioX = x*50+25;
+        marioY = y*50+25;
+        field[y][x] = 0;
+      }
+    }
+  }
+  mario = new Character(marioX,marioY,field);
 }
 
 void keyPressed() {
@@ -74,6 +95,8 @@ void keyPressed() {
   } else if(keyCode == 37) {
     goRight = false;
     goRight = true;
+  } else if(keyCode == 38) {
+    mario.jump();
   }
 }
 void keyReleased() {
