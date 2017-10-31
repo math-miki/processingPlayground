@@ -93,7 +93,7 @@ void keyPressed() {
     goRight = false;
     goLeft = true;
   } else if(keyCode == 37) {
-    goRight = false;
+    goLeft = false;
     goRight = true;
   } else if(keyCode == 38) {
     mario.jump();

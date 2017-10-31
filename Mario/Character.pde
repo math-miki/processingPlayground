@@ -2,6 +2,7 @@ class Character {
   float vx;
   float vy;
   boolean jumping;
+  boolean falling;
   float x;
   float y;
   int[][] field;
@@ -18,6 +19,11 @@ class Character {
     calcVy();
     this.x += this.vx;
     this.y -= this.vy;
+    if(field[int(this.y/50)+1][int(this.x/50)] == 0) {
+      if(!(jumping)) {
+        falling = true;
+      }
+    }
     if(this.x<0) {
       this.x = 2;
       this.vx = 0;
@@ -39,6 +45,12 @@ class Character {
       if(isFootGround() && this.vy<0) {
         this.vy = 0;
         this.jumping = false;
+      }
+    } else if (falling) {
+      this.vy -= 2;
+      if(isFootGround() && this.vy<0) {
+        this.vy = 0;
+        this.falling = false;
       }
     }
   }
