@@ -46,14 +46,16 @@ class Character {
         this.vy = 0;
         this.jumping = false;
       }
+      if(hitToBlock() != 0 && vy>0) {
+        this.vy *= -1;
+        jumping = false;
+        falling = true;
+      }
     } else if (falling) {
       this.vy -= 2;
       if(isFootGround() && this.vy<0) {
         this.vy = 0;
         this.falling = false;
-      }
-      if(hitToBlock() != 0) {
-        this.vy *= -1;
       }
     }
   }
@@ -63,7 +65,7 @@ class Character {
      1: hit to block which disappears.
      2: hit to block which is kept as it is.
      */
-     int cellOverHead = field[int(x/50)-1][int(y/50)];
+     int cellOverHead = field[int(y/50)][int(x/50)];
      if(cellOverHead == 2) {
        return 1;
      } else if(cellOverHead == 1) {
