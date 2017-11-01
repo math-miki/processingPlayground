@@ -32,7 +32,7 @@ class Character {
   }
   void jump() {
     if(!(jumping)) {
-      this.vy = 35;
+      this.vy = 30;
       this.jumping = true;
     }
   }
@@ -52,7 +52,26 @@ class Character {
         this.vy = 0;
         this.falling = false;
       }
+      if(hitToBlock() != 0) {
+        this.vy *= -1;
+      }
     }
+  }
+  protected int hitToBlock() {
+    /*
+     0: no
+     1: hit to block which disappears.
+     2: hit to block which is kept as it is.
+     */
+     int cellOverHead = field[int(x/50)-1][int(y/50)];
+     if(cellOverHead == 2) {
+       return 1;
+     } else if(cellOverHead == 1) {
+       return 2;
+     } else {
+       return 0;
+     }
+
   }
   void display() {
     fill(255,0,0);
