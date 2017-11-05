@@ -28,7 +28,9 @@ class Character {
       this.x = 2;
       this.vx = 0;
     }
-    // calcV(x);
+    if(this.x>1300) {
+      this.x = 1300;
+    }
   }
   void jump() {
     if(!(jumping)) {
