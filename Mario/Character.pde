@@ -17,19 +17,20 @@ class Character {
   void move(int dx) {
     calcVx(dx);
     calcVy();
-    this.x += this.vx;
-    this.y -= this.vy;
-    if(field[int(this.y/50)+1][int(this.x/50)] == 0) {
+    if(field[int(this.y/50)+1][floor(this.x/50)] == 0) {
       if(!(jumping)) {
         falling = true;
       }
     }
+    this.x += this.vx;
+    this.y -= this.vy;
     if(this.x<0) {
       this.x = 2;
       this.vx = 0;
     }
     if(this.x>1300) {
-      this.x = 1300;
+      this.x = 1298;
+      this.vx = 0;
     }
   }
   void jump() {
