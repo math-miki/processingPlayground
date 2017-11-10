@@ -1,4 +1,4 @@
-/Mario/build
+Mario/build
 /Fractal/build
 .DS_Store
 /Colors/.DS_Store
@@ -6,3 +6,4 @@
 /Circles/build
 /Colors/build
 /Fractal/FractalGasket/build
+/Fractal/FractalCircles/build/
