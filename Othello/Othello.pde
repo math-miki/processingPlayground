@@ -40,10 +40,41 @@ void draw() {
 void mousePressed() {
   int x = mouseX/50;
   int y = mouseY/50;
+  
   if (board[y][x] == 0) {
-    turn++;
+    if(judge(x,y,turn%2==0 ? 1 : 2))
     board[y][x] = turn%2==0 ? 1 : 2;
+    turn++;
   } else {
     board[y][x] = (board[y][x] ) % 2 + 1;
+  }
+}
+
+boolean judge(int x,int y,int n) {
+  return CanPutOthello(x,y,n,-1,-1,0)
+    || CanPutOthello(x,y,n,0,-1,0)
+    || CanPutOthello(x,y,n,1,-1,0)
+    || CanPutOthello(x,y,n,-1,0,0)
+    || CanPutOthello(x,y,n,1,0,0)
+    || CanPutOthello(x,y,n,-1,1,0)
+    || CanPutOthello(x,y,n,0,1,0)
+    || CanPutOthello(x,y,n,1,1,0);
+}
+
+boolean CanPutOthello(int x,int y, int n,int dx,int dy,int count) {
+  if(x+dx<0 || x+dx>7 || y+dy<0 || y+dy>7) {
+    return false;
+  }
+  int nextOthello = board[y+dy][x+dx];
+  if(nextOthello == n) {
+    if(count == 0) {
+      return false;
+    } else { 
+      return true;
+    }
+  } else if (nextOthello == n%2 + 1) {
+    return CanPutOthello(x+dx,y+dy,n,dx,dy,++count);
+  } else {
+    return false;
   }
 }
