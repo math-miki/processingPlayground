@@ -38,14 +38,16 @@ void draw() {
 }
 
 void mousePressed() {
+  println("touched");
   int x = mouseX/50;
   int y = mouseY/50;
 
   if (board[y][x] == 0) {
-    if (judge(x, y, turn%2==0 ? 1 : 2))
+    if (judge(x, y, turn%2==0 ? 1 : 2)) {
       board[y][x] = turn%2==0 ? 1 : 2;
-    turn++;
-    reverse(x, y, board[y][x]);
+      turn++;
+      reverse(x, y, board[y][x]);
+    }
   } else {
     board[y][x] = (board[y][x] ) % 2 + 1;
   }
@@ -107,7 +109,7 @@ void reverse(int x, int y, int n) {
   }
 }
 
-void re(int x,int y,int n,int dx,int dy) {
+void re(int x, int y, int n, int dx, int dy) {
   if (x+dx<0 || x+dx>7 || y+dy<0 || y+dy>7) {
     return;
   }
