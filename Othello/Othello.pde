@@ -4,7 +4,7 @@ void setup() {
   size(400, 400);
   board = new int[8][8];
   for (int i=0; i<8; i++) {
-    for (int j=0; j<8; j++) {
+    for (int j=0; j<8; j++) {8
       board[i][j] = 0;
     }
   }
@@ -83,30 +83,14 @@ boolean CanPutOthello(int x, int y, int n, int dx, int dy, int count) {
 }
 
 void reverse(int x, int y, int n) {
-  if (CanPutOthello(x, y, n, -1, -1, 0)) {
-    re(x, y, n, -1, -1);
-  }
-  if (CanPutOthello(x, y, n, 0, -1, 0)) {
-    re(x, y, n, 0, -1);
-  }
-  if (CanPutOthello(x, y, n, 1, -1, 0)) {
-    re(x, y, n, 1, -1);
-  }
-  if (CanPutOthello(x, y, n, -1, 0, 0)) {
-    re(x, y, n, -1, 0);
-  }
-  if (CanPutOthello(x, y, n, 1, 0, 0)) {
-    re(x, y, n, 1, 0);
-  }
-  if (CanPutOthello(x, y, n, -1, 1, 0)) {
-    re(x, y, n, -1, 1);
-  }
-  if (CanPutOthello(x, y, n, 0, 1, 0)) {
-    re(x, y, n, 0, 1);
-  }
-  if (CanPutOthello(x, y, n, 1, 1, 0)) {
-    re(x, y, n, 1, 1);
-  }
+  if (CanPutOthello(x, y, n, -1, -1, 0)) { re(x, y, n, -1, -1); }
+  if (CanPutOthello(x, y, n, 0, -1, 0)) { re(x, y, n, 0, -1); }
+  if (CanPutOthello(x, y, n, 1, -1, 0)) { re(x, y, n, 1, -1); }
+  if (CanPutOthello(x, y, n, -1, 0, 0)) { re(x, y, n, -1, 0); }
+  if (CanPutOthello(x, y, n, 1, 0, 0)) { re(x, y, n, 1, 0); }
+  if (CanPutOthello(x, y, n, -1, 1, 0)) { re(x, y, n, -1, 1); }
+  if (CanPutOthello(x, y, n, 0, 1, 0)) { re(x, y, n, 0, 1); }
+  if (CanPutOthello(x, y, n, 1, 1, 0)) { re(x, y, n, 1, 1);}
 }
 
 void re(int x, int y, int n, int dx, int dy) {
